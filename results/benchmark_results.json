@@ -1,0 +1,41 @@
+[
+  {
+    "system": "Proposed (Sanitize+Keyword+RiskScore)",
+    "accuracy": 0.7865731462925851,
+    "precision": 0.5968586387434555,
+    "recall": 0.456,
+    "f1": 0.5170068027210885,
+    "latency_ms_mean": 3.364889988977904,
+    "latency_ms_p50": 2.0832489999804693,
+    "latency_ms_p95": 9.19880439999474,
+    "peak_memory_mb": 0.5848941802978516,
+    "throughput_req_s": 296.76412519283525,
+    "n_test": 998
+  },
+  {
+    "system": "B1: Keyword-only",
+    "accuracy": 0.7525050100200401,
+    "precision": 0.5066079295154186,
+    "recall": 0.46,
+    "f1": 0.48218029350104824,
+    "latency_ms_mean": 2.237042449899991,
+    "latency_ms_p50": 1.1532024999780788,
+    "latency_ms_p95": 7.120939999984443,
+    "peak_memory_mb": 0.6415138244628906,
+    "throughput_req_s": 446.63908849906005,
+    "n_test": 998
+  },
+  {
+    "system": "B2: TF-IDF + Linear SVM",
+    "accuracy": 0.8987975951903807,
+    "precision": 0.8599033816425121,
+    "recall": 0.712,
+    "f1": 0.7789934354485777,
+    "latency_ms_mean": 11.810547334669693,
+    "latency_ms_p50": 9.727770000012015,
+    "latency_ms_p95": 22.414752299982855,
+    "peak_memory_mb": 0.8012123107910156,
+    "throughput_req_s": 84.64123290949276,
+    "n_test": 998
+  }
+]

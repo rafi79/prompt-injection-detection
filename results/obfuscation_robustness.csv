@@ -1,0 +1,4 @@
+obfuscation,detection_rate_no_sanitization,detection_rate_with_sanitization,n
+zero_width_insertion,0.0,1.0,115
+homoglyph_substitution,0.02608695652173913,1.0,115
+base64_wrapping,0.0,0.3652173913043478,115

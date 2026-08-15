@@ -1,0 +1,13 @@
+pandas
+numpy
+scikit-learn
+rapidfuzz
+beautifulsoup4
+pyarrow
+
+# --- optional, only needed for scripts/promptguard_baseline.py and
+#     scripts/adversarial_paraphrase_test.py (GPU-accelerated, requires
+#     internet access to Hugging Face Hub) ---
+# torch
+# transformers
+# accelerate

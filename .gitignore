@@ -1,0 +1,27 @@
+# Virtual environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Raw cloned source datasets (see README for how to re-fetch these)
+jailbreak_llms/
+prompt-injections/
+llm-security-prompt-injection/
+data/raw/
+
+# Large model artifacts (exclude from git; use Git LFS if you want them tracked)
+results/promptguard_finetuned_model/
+results/*.pkl
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+*.log
+
+# Stray/leftover folders
+{src,scripts,data}/
