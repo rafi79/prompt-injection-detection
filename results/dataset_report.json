@@ -1,0 +1,22 @@
+{
+  "label_conflicts_resolved_to_positive": 42,
+  "pr1m8_rows_raw": 82,
+  "pr1m8_rows_duplicating_other_source": 51,
+  "exact_duplicates_removed": 610,
+  "n_total": 6600,
+  "n_pos": 1650,
+  "n_neg": 4950,
+  "by_source": {
+    "deepset|label=0": 158,
+    "deepset|label=1": 263,
+    "jailbreak_llms|label=0": 4792,
+    "jailbreak_llms|label=1": 1356,
+    "pr1m8|label=1": 31
+  },
+  "fingerprint": "bd868eb585b4",
+  "split_seed42_random": "train 4620 (1155 pos / 3465 neg) | val 989 (247 pos / 742 neg) | test 991 (248 pos / 743 neg)",
+  "near_duplicate_groups(cos>=0.8)": 5799,
+  "texts_in_multi_member_groups": 1174,
+  "largest_group": 44,
+  "groups_with_both_labels": 53
+}

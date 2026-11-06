@@ -1,0 +1,22 @@
+\begin{table*}[t]
+\centering
+\caption{Seed-42 deployment check with the band chosen on the validation split: test F1, escalated share (\%), measured single-request latency (ms), mean retention of encoded attacks (Base64, double Base64, hex; \%), paraphrase evasion (\%), adaptive-attack success at 20 queries (\%), and mean F1 over the six non-English languages. +san: PromptGuard receives the sanitized text.}
+\label{tab:cascadelive}
+\small
+\begin{tabular}{lcccccccc}
+\toprule
+\textbf{System} & \textbf{F1} & \textbf{Esc.} & \textbf{Mean ms} & \textbf{p95 ms} & \textbf{Encoded} & \textbf{Para. ev.} & \textbf{ASR@20} & \textbf{Non-EN F1} \\
+\midrule
+B2 & 0.788 & -- & 8.2 & 16.2 & 99.0 & 18.5 & 75.4 & 0.307 \\
+v3 & 0.770 & -- & 15.6 & 39.1 & 96.7 & 18.6 & 55.2 & 0.399 \\
+B3 & 0.784 & -- & 59.6 & 76.0 & 2.0 & 13.7 & 57.3 & 0.803 \\
+B3+san & 0.786 & -- & 70.0 & 100.5 & 16.7 & 12.9 & 56.4 & 0.802 \\
+B2$\rightarrow$B3@10 & 0.783 & 8.4 & 15.2 & 64.7 & 96.7 & 13.7 & 52.0 & 0.607 \\
+B2$\rightarrow$B3@20 & 0.785 & 15.4 & 20.8 & 93.4 & 95.0 & 11.7 & 51.6 & 0.671 \\
+B2$\rightarrow$B3@30 & 0.785 & 15.4 & 19.0 & 79.0 & 95.0 & 11.7 & 51.6 & 0.671 \\
+B2$\rightarrow$B3+san@20 & 0.786 & 15.4 & 19.2 & 79.1 & 96.2 & 11.7 & 50.8 & 0.671 \\
+v3$\rightarrow$B3@20 & 0.792 & 19.4 & 28.7 & 88.3 & 83.3 & 13.7 & 49.2 & 0.476 \\
+v3$\rightarrow$B3+san@20 & 0.791 & 19.4 & 31.2 & 104.1 & 87.0 & 12.8 & 47.5 & 0.476 \\
+\bottomrule
+\end{tabular}
+\end{table*}

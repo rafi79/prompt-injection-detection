@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\caption{Single-request latency (ms) over the same 512 test prompts (3 timed passes after warm-up), measured single-stream throughput (req/s), model size (MB), and per-item latency at batch size 32.}
+\label{tab:latency}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llcccccc}
+\toprule
+ & & \multicolumn{3}{c}{\textbf{Latency (ms)}} & & & \textbf{bs=32} \\
+\cmidrule(lr){3-5}
+\textbf{Sys.} & \textbf{Dev.} & \textbf{Med.} & \textbf{Mean} & \textbf{p95} & \textbf{req/s} & \textbf{MB} & \textbf{ms} \\
+\midrule
+B1 & CPU & 2.6 & 5.6 & 19.8 & 179 & 0.0 & 5.7 \\
+v1 & CPU & 4.2 & 7.5 & 23.6 & 129 & 0.0 & 5.6 \\
+v2 & CPU & 6.0 & 9.3 & 25.3 & 105 & 31.3 & 6.0 \\
+v2cf & CPU & 5.7 & 8.8 & 24.3 & 110 & 31.3 & 6.2 \\
+v3 & CPU & 12.1 & 18.3 & 47.4 & 59 & 81.6 & 13.1 \\
+B2 & CPU & 8.2 & 9.9 & 19.7 & 107 & 1.2 & 2.9 \\
+B3 & GPU & 67.2 & 72.5 & 107.9 & 16 & 1063.6 & 22.1 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\caption{Cascades (stage 1 on CPU, PromptGuard only inside the uncertainty band; @$x$: at most $x$\% escalated). Thresholds and bands chosen by 2-fold cross-fitting on test predictions; random split 5 seeds, grouped 3 seeds. $p$: paired $t$-test of F1 against B2 / B3. Esc.: escalated share (\%). Lat.: expected mean latency from Table~\ref{tab:latency}.}
+\label{tab:cascade}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lcccccc}
+\toprule
+ & \textbf{F1 (R)} & $p_{B2}$ & $p_{B3}$ & \textbf{F1 (G)} & \textbf{Esc.} & \textbf{Lat.} \\
+\midrule
+B2 & 0.767$\pm$0.013 & -- & 0.228 & 0.756 & -- & 9.9 \\
+v3 & 0.754$\pm$0.024 & 0.100 & 0.089 & 0.729 & -- & 18.3 \\
+B3 & 0.781$\pm$0.019 & 0.228 & -- & 0.753 & -- & 72.5 \\
+B2$\rightarrow$B3@10 & 0.784$\pm$0.009 & 0.010 & 0.690 & 0.757 & 8.4 & 16.0 \\
+B2$\rightarrow$B3@20 & 0.793$\pm$0.012 & 0.006 & 0.208 & 0.758 & 14.2 & 20.2 \\
+B2$\rightarrow$B3@30 & 0.794$\pm$0.012 & 0.009 & 0.155 & 0.752 & 16.2 & 21.7 \\
+v3$\rightarrow$B3@20 & 0.779$\pm$0.020 & 0.146 & 0.834 & 0.767 & 15.5 & 29.5 \\
+Avg(B2,v3,B3) & 0.808$\pm$0.020 & 0.008 & 0.009 & 0.782 & -- & 100.7 \\
+\bottomrule
+\end{tabular}
+\end{table}

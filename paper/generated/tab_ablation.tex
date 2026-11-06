@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Semantic-stage ablation (random split, 5 seeds; all cross-fitted). $p$: paired $t$-test against v3.}
+\label{tab:ablation}
+\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{TF-IDF} & \textbf{Prot.} & \textbf{kNN} & \textbf{F1} & \textbf{AUC} & $p$ \\
+\midrule
+word & 1 & -- & 0.713$\pm$0.014 & 0.903 & 0.045 \\
+char & 1 & -- & 0.716$\pm$0.020 & 0.908 & 0.042 \\
+word+char & 1 & -- & 0.722$\pm$0.017 & 0.909 & 0.048 \\
+word+char & 8 & -- & 0.706$\pm$0.022 & 0.891 & 0.024 \\
+word & 8 & 10 & 0.731$\pm$0.030 & 0.908 & 0.245 \\
+word+char & 8 & 10 & 0.747$\pm$0.020 & 0.910 & -- \\
+\bottomrule
+\end{tabular}
+\end{table}

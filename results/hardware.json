@@ -1,0 +1,12 @@
+{
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+  "python": "3.13.14",
+  "ram_gb": 31.6,
+  "cpu_physical_cores": 8,
+  "cpu_logical_cores": 12,
+  "torch": "2.14.1+cu126",
+  "gpu": "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+  "gpu_vram_gb": 6.0,
+  "cuda": "12.6"
+}

@@ -1,0 +1,30 @@
+\begin{table}[t]
+\centering
+\caption{Retention (\%) of attacks each system detects in clean form after one obfuscation, with the original (orig.), no (none) or the revised (rev.) sanitizer; bottom: false-positive rate (\%) on benign test prompts and on two constructed benign controls. PromptGuard (B3) has no sanitizer.}
+\label{tab:obf}
+\small
+\setlength{\tabcolsep}{2.4pt}
+\begin{tabular}{lccccccc}
+\toprule
+ & \multicolumn{2}{c}{\textbf{B1}} & \multicolumn{2}{c}{\textbf{v3}} & \multicolumn{2}{c}{\textbf{B2}} & \textbf{B3} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+\textbf{Technique} & orig. & rev. & none & rev. & none & rev. & -- \\
+\midrule
+Zero-width & 100 & 100 & 100 & 100 & 0 & 100 & 98 \\
+Homoglyph & 94 & 100 & 83 & 100 & 41 & 100 & 100 \\
+Full-width & 100 & 100 & 11 & 100 & 0 & 100 & 100 \\
+Base64 (wrapped) & 36 & 100 & 11 & 98 & 0 & 99 & 4 \\
+Base64 URL-safe & 7 & 100 & 8 & 98 & 0 & 99 & 5 \\
+Base64 double & 0 & 100 & 15 & 98 & 0 & 99 & 2 \\
+Hex & 0 & 100 & 2 & 94 & 0 & 99 & 0 \\
+ROT13 & 0 & 91 & 19 & 90 & 23 & 85 & 85 \\
+Reversed & 0 & 91 & 18 & 93 & 93 & 99 & 99 \\
+Leetspeak & 6 & 42 & 54 & 96 & 45 & 96 & 99 \\
+Spaced letters & 0 & 96 & 100 & 96 & 0 & 99 & 100 \\
+\midrule
+Benign FPR & 16 & 16 & 8 & 8 & 9 & 9 & 8 \\
+Benign, Base64-wrapped & 3 & 16 & 17 & 10 & 0 & 8 & 4 \\
+Benign + URL/hash & 13 & 13 & 7 & 7 & 7 & 7 & 9 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,11 @@
+system,suffix,n_test_flagged,n_test,n_train_flagged,evasion_learned_suffix,evasion_random_suffix_mean,evasion_random_suffix_std
+B1,,33,150,38,0.0,0.0,0.0
+v1,list name name name name name name name,127,150,125,0.3543307086614173,0.0,0.0
+v2,product description article title audience create business expert,112,150,114,0.30357142857142855,0.1857142857142857,0.029206120060350227
+v2cf,title article product description audience create business expert,126,150,131,0.29365079365079366,0.13174603174603172,0.03991992488875965
+v3,targetlangua targetlangua targetlangua targetlangua expert expert audience audience,116,150,121,0.21551724137931033,0.0706896551724138,0.022314101906111695
+B2,business business short related create article player product,122,150,135,0.38524590163934425,0.15901639344262292,0.0759248273895699
+B3,task targetlangua include audience skills text create short,117,150,128,0.20512820512820512,0.02222222222222222,0.009745089103411436
+v2cf+win,product description article title audience create business expert,101,150,93,0.15841584158415842,0.1425742574257426,0.005422995618863021
+v3+win,targetlangua targetlangua targetlangua keyword keyword article article keyword,112,150,112,0.13392857142857142,0.03571428571428571,0.02276347997139636
+B2+win,business business short related create article product player,105,150,131,0.19047619047619047,0.1276190476190476,0.008518354199999198

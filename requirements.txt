@@ -1,13 +1,15 @@
-pandas
-numpy
-scikit-learn
-rapidfuzz
-beautifulsoup4
-pyarrow
+# core (CPU systems: B1, v1, v2, v2cf, v3, B2)
+pandas>=2.0
+numpy>=1.24
+scipy>=1.10
+scikit-learn>=1.3
+rapidfuzz>=3.0
+beautifulsoup4>=4.12
+pyarrow>=14
+psutil>=5.9
 
-# --- optional, only needed for scripts/promptguard_baseline.py and
-#     scripts/adversarial_paraphrase_test.py (GPU-accelerated, requires
-#     internet access to Hugging Face Hub) ---
-# torch
-# transformers
-# accelerate
+# GPU / Hugging Face parts: PromptGuard (B3), paraphraser (Qwen2.5-1.5B-Instruct),
+# translator (NLLB-200-distilled-600M). Install torch with CUDA from pytorch.org first.
+transformers>=4.40
+accelerate>=0.30
+sentencepiece>=0.1.99

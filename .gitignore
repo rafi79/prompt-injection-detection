@@ -16,6 +16,7 @@ data/raw/
 # Large model artifacts (exclude from git; use Git LFS if you want them tracked)
 results/promptguard_finetuned_model/
 results/*.pkl
+results/models/
 
 # OS/editor junk
 .DS_Store

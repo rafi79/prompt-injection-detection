@@ -1,104 +1,52 @@
 """
-Build a unified labeled dataset (label=1 injection/jailbreak, label=0 benign)
-from three real, publicly available sources:
+Build the cleaned dataset from the pinned raw files and write the seed-42
+random split to data/processed/ (for inspection only - every experiment
+script rebuilds its splits from src/data.py, so it never depends on these
+CSVs being up to date).
 
-  1. verazuo/jailbreak_llms (ACM CCS'24) - 1,405 real in-the-wild jailbreak
-     prompts + 13,735 real regular ChatGPT prompts.
-  2. deepset/prompt-injections benchmark (mirrored locally as parquet by
-     sinanw/llm-security-prompt-injection) - 546 train + 116 test labeled
-     prompt-injection examples, a dataset used across the prompt-injection
-     defense literature.
-  3. pr1m8/prompt-injections - 82 categorized direct prompt-injection
-     examples (instruction override, role-play, priority manipulation, etc.)
-
-No synthetic or fabricated examples are included. Class balance is controlled
-by subsampling the (much larger) benign pool rather than inventing data.
+    py scripts/fetch_data.py
+    py scripts/build_dataset.py
 """
-import pandas as pd
-import numpy as np
+import sys
+import json
 from pathlib import Path
 
-RAW = Path(__file__).resolve().parent.parent / "data" / "raw"
-OUT = Path(__file__).resolve().parent.parent / "data" / "processed"
-OUT.mkdir(parents=True, exist_ok=True)
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 
-SEED = 42
-rng = np.random.default_rng(SEED)
+from src.data import load_pool, make_split, fingerprint, describe, near_duplicate_groups
 
-
-def load_jailbreak_llms():
-    jb = pd.read_csv(RAW / "jailbreak_llms_prompts" / "jailbreak_prompts_2023_12_25.csv")
-    reg = pd.read_csv(RAW / "jailbreak_llms_prompts" / "regular_prompts_2023_12_25.csv")
-    jb_df = pd.DataFrame({"text": jb["prompt"].astype(str), "label": 1, "source": "jailbreak_llms_ccs24"})
-    reg_df = pd.DataFrame({"text": reg["prompt"].astype(str), "label": 0, "source": "jailbreak_llms_ccs24"})
-    return jb_df, reg_df
-
-
-def load_deepset():
-    tr = pd.read_parquet(RAW / "deepset_train.parquet")
-    te = pd.read_parquet(RAW / "deepset_test.parquet")
-    df = pd.concat([tr, te], ignore_index=True)
-    df = df.rename(columns={"text": "text", "label": "label"})
-    df["source"] = "deepset_prompt_injections"
-    return df[df.label == 1][["text", "label", "source"]], df[df.label == 0][["text", "label", "source"]]
-
-
-def load_pr1m8():
-    df = pd.read_csv(RAW / "pr1m8_prompt_injections.csv")
-    out = pd.DataFrame({"text": df["text"].astype(str), "label": 1, "source": "pr1m8_prompt_injections"})
-    return out, pd.DataFrame(columns=["text", "label", "source"])
+OUT = ROOT / "data" / "processed"
+RESULTS = ROOT / "results"
 
 
 def main():
-    jb_pos, jb_neg = load_jailbreak_llms()
-    ds_pos, ds_neg = load_deepset()
-    pr_pos, pr_neg = load_pr1m8()
+    OUT.mkdir(parents=True, exist_ok=True)
+    RESULTS.mkdir(exist_ok=True)
+    rep = {}
+    pool = load_pool(42, report=rep)
+    train, val, test = make_split(pool, 42, "random")
+    cols = ["text", "label", "source", "pr1m8_category", "language", "all_sources"]
+    for name, d in (("train", train), ("val", val), ("test", test)):
+        d[cols].to_csv(OUT / f"{name}.csv", index=False)
 
-    positives = pd.concat([jb_pos, ds_pos, pr_pos], ignore_index=True)
-    negatives = pd.concat([jb_neg, ds_neg, pr_neg], ignore_index=True)
-
-    # basic cleanup: drop empty/very short/duplicate text
-    for df in (positives, negatives):
-        df["text"] = df["text"].astype(str).str.strip()
-    positives = positives[positives.text.str.len() > 5].drop_duplicates(subset="text")
-    negatives = negatives[negatives.text.str.len() > 5].drop_duplicates(subset="text")
-
-    # cap benign at 3x positive count to avoid extreme imbalance while
-    # staying realistic (benign traffic dominates in production).
-    n_pos = len(positives)
-    n_neg_target = min(len(negatives), n_pos * 3)
-    negatives = negatives.sample(n=n_neg_target, random_state=SEED).reset_index(drop=True)
-
-    data = pd.concat([positives, negatives], ignore_index=True)
-    data = data.sample(frac=1.0, random_state=SEED).reset_index(drop=True)
-
-    # stratified 70/15/15 split
-    def split(df):
-        n = len(df)
-        n_train = int(n * 0.70)
-        n_val = int(n * 0.15)
-        return df.iloc[:n_train], df.iloc[n_train:n_train + n_val], df.iloc[n_train + n_val:]
-
-    pos = data[data.label == 1].sample(frac=1.0, random_state=SEED).reset_index(drop=True)
-    neg = data[data.label == 0].sample(frac=1.0, random_state=SEED).reset_index(drop=True)
-
-    pos_tr, pos_va, pos_te = split(pos)
-    neg_tr, neg_va, neg_te = split(neg)
-
-    train = pd.concat([pos_tr, neg_tr]).sample(frac=1.0, random_state=SEED).reset_index(drop=True)
-    val = pd.concat([pos_va, neg_va]).sample(frac=1.0, random_state=SEED).reset_index(drop=True)
-    test = pd.concat([pos_te, neg_te]).sample(frac=1.0, random_state=SEED).reset_index(drop=True)
-
-    train.to_csv(OUT / "train.csv", index=False)
-    val.to_csv(OUT / "val.csv", index=False)
-    test.to_csv(OUT / "test.csv", index=False)
-
-    print("Dataset sources:")
-    print(data["source"].value_counts())
-    print("\nOverall label balance:", data["label"].value_counts().to_dict())
-    print(f"\nTrain: {len(train)} ({train.label.sum()} pos / {len(train)-train.label.sum()} neg)")
-    print(f"Val:   {len(val)} ({val.label.sum()} pos / {len(val)-val.label.sum()} neg)")
-    print(f"Test:  {len(test)} ({test.label.sum()} pos / {len(test)-test.label.sum()} neg)")
+    groups = near_duplicate_groups(pool.text.tolist())
+    import pandas as pd
+    g = pd.Series(groups)
+    size = g.map(g.value_counts())
+    mixed = pd.DataFrame({"g": groups, "y": pool.label.values}).groupby("g").y.nunique().gt(1).sum()
+    rep.update({
+        "fingerprint": fingerprint(pool),
+        "split_seed42_random": describe(train, val, test),
+        "near_duplicate_groups(cos>=0.8)": int(g.nunique()),
+        "texts_in_multi_member_groups": int((size > 1).sum()),
+        "largest_group": int(size.max()),
+        "groups_with_both_labels": int(mixed),
+    })
+    rep["by_source"] = {f"{k[0]}|label={k[1]}": int(v) for k, v in rep["by_source"].items()}
+    print(json.dumps(rep, indent=2))
+    (RESULTS / "dataset_report.json").write_text(json.dumps(rep, indent=2))
+    print(f"\nwrote {OUT}/train.csv, val.csv, test.csv and results/dataset_report.json")
 
 
 if __name__ == "__main__":

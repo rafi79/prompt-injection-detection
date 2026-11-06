@@ -1,0 +1,13 @@
+{
+  "n_train": 4620,
+  "n_german_like": 274,
+  "attack_share_german_like": 0.6131386861313869,
+  "attack_share_overall": 0.25,
+  "german_like_by_source_label": {
+    "deepset|0": 20,
+    "deepset|1": 54,
+    "jailbreak_llms|0": 86,
+    "jailbreak_llms|1": 112,
+    "pr1m8|1": 2
+  }
+}

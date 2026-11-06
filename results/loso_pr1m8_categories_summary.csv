@@ -1,0 +1,106 @@
+subset,category,system,n,detected,seeds,recall_mean
+pr1m8_seen,Authority Role,B1,3,0,3,0.0
+pr1m8_seen,Authority Role,B2,3,7,3,0.7777777777777778
+pr1m8_seen,Authority Role,B3,3,3,1,1.0
+pr1m8_seen,Authority Role,v1,3,0,3,0.0
+pr1m8_seen,Authority Role,v2,3,1,3,0.1111111111111111
+pr1m8_seen,Authority Role,v2cf,3,2,3,0.2222222222222222
+pr1m8_seen,Authority Role,v3,3,7,3,0.7777777777777778
+pr1m8_seen,Context Manipulation,B1,8,0,3,0.0
+pr1m8_seen,Context Manipulation,B2,8,19,3,0.7916666666666666
+pr1m8_seen,Context Manipulation,B3,8,5,1,0.625
+pr1m8_seen,Context Manipulation,v1,8,0,3,0.0
+pr1m8_seen,Context Manipulation,v2,8,7,3,0.2916666666666667
+pr1m8_seen,Context Manipulation,v2cf,8,7,3,0.2916666666666667
+pr1m8_seen,Context Manipulation,v3,8,10,3,0.4166666666666667
+pr1m8_seen,Formatting Trick,B1,1,0,3,0.0
+pr1m8_seen,Formatting Trick,B2,1,3,3,1.0
+pr1m8_seen,Formatting Trick,B3,1,1,1,1.0
+pr1m8_seen,Formatting Trick,v1,1,0,3,0.0
+pr1m8_seen,Formatting Trick,v2,1,0,3,0.0
+pr1m8_seen,Formatting Trick,v2cf,1,0,3,0.0
+pr1m8_seen,Formatting Trick,v3,1,1,3,0.3333333333333333
+pr1m8_seen,Hijacking,B1,1,0,3,0.0
+pr1m8_seen,Hijacking,B2,1,3,3,1.0
+pr1m8_seen,Hijacking,B3,1,1,1,1.0
+pr1m8_seen,Hijacking,v1,1,0,3,0.0
+pr1m8_seen,Hijacking,v2,1,2,3,0.6666666666666666
+pr1m8_seen,Hijacking,v2cf,1,2,3,0.6666666666666666
+pr1m8_seen,Hijacking,v3,1,3,3,1.0
+pr1m8_seen,Instruction Override,B1,22,33,3,0.5
+pr1m8_seen,Instruction Override,B2,22,66,3,1.0
+pr1m8_seen,Instruction Override,B3,22,21,1,0.9545454545454546
+pr1m8_seen,Instruction Override,v1,22,33,3,0.5
+pr1m8_seen,Instruction Override,v2,22,43,3,0.6515151515151515
+pr1m8_seen,Instruction Override,v2cf,22,45,3,0.6818181818181818
+pr1m8_seen,Instruction Override,v3,22,61,3,0.9242424242424242
+pr1m8_seen,Multilingual,B1,4,0,3,0.0
+pr1m8_seen,Multilingual,B2,4,10,3,0.8333333333333334
+pr1m8_seen,Multilingual,B3,4,3,1,0.75
+pr1m8_seen,Multilingual,v1,4,0,3,0.0
+pr1m8_seen,Multilingual,v2,4,9,3,0.75
+pr1m8_seen,Multilingual,v2cf,4,9,3,0.75
+pr1m8_seen,Multilingual,v3,4,9,3,0.75
+pr1m8_seen,Psychological Manipulation,B1,2,0,3,0.0
+pr1m8_seen,Psychological Manipulation,B2,2,6,3,1.0
+pr1m8_seen,Psychological Manipulation,B3,2,2,1,1.0
+pr1m8_seen,Psychological Manipulation,v1,2,0,3,0.0
+pr1m8_seen,Psychological Manipulation,v2,2,6,3,1.0
+pr1m8_seen,Psychological Manipulation,v2cf,2,6,3,1.0
+pr1m8_seen,Psychological Manipulation,v3,2,5,3,0.8333333333333334
+pr1m8_seen,Role-Playing,B1,10,3,3,0.1
+pr1m8_seen,Role-Playing,B2,10,30,3,1.0
+pr1m8_seen,Role-Playing,B3,10,10,1,1.0
+pr1m8_seen,Role-Playing,v1,10,3,3,0.1
+pr1m8_seen,Role-Playing,v2,10,27,3,0.9
+pr1m8_seen,Role-Playing,v2cf,10,29,3,0.9666666666666667
+pr1m8_seen,Role-Playing,v3,10,27,3,0.9
+pr1m8_unique,Authority Role,B1,2,0,3,0.0
+pr1m8_unique,Authority Role,B2,2,4,3,0.6666666666666666
+pr1m8_unique,Authority Role,B3,2,0,1,0.0
+pr1m8_unique,Authority Role,v1,2,0,3,0.0
+pr1m8_unique,Authority Role,v2,2,3,3,0.5
+pr1m8_unique,Authority Role,v2cf,2,3,3,0.5
+pr1m8_unique,Authority Role,v3,2,4,3,0.6666666666666666
+pr1m8_unique,Formatting Trick,B1,7,0,3,0.0
+pr1m8_unique,Formatting Trick,B2,7,4,3,0.19047619047619047
+pr1m8_unique,Formatting Trick,B3,7,4,1,0.5714285714285714
+pr1m8_unique,Formatting Trick,v1,7,3,3,0.14285714285714285
+pr1m8_unique,Formatting Trick,v2,7,7,3,0.3333333333333333
+pr1m8_unique,Formatting Trick,v2cf,7,8,3,0.38095238095238093
+pr1m8_unique,Formatting Trick,v3,7,8,3,0.38095238095238093
+pr1m8_unique,Hijacking,B1,4,0,3,0.0
+pr1m8_unique,Hijacking,B2,4,12,3,1.0
+pr1m8_unique,Hijacking,B3,4,4,1,1.0
+pr1m8_unique,Hijacking,v1,4,0,3,0.0
+pr1m8_unique,Hijacking,v2,4,12,3,1.0
+pr1m8_unique,Hijacking,v2cf,4,12,3,1.0
+pr1m8_unique,Hijacking,v3,4,12,3,1.0
+pr1m8_unique,Instruction Override,B1,1,0,3,0.0
+pr1m8_unique,Instruction Override,B2,1,3,3,1.0
+pr1m8_unique,Instruction Override,B3,1,1,1,1.0
+pr1m8_unique,Instruction Override,v1,1,0,3,0.0
+pr1m8_unique,Instruction Override,v2,1,0,3,0.0
+pr1m8_unique,Instruction Override,v2cf,1,0,3,0.0
+pr1m8_unique,Instruction Override,v3,1,3,3,1.0
+pr1m8_unique,Jailbreak,B1,7,12,3,0.5714285714285714
+pr1m8_unique,Jailbreak,B2,7,18,3,0.8571428571428571
+pr1m8_unique,Jailbreak,B3,7,7,1,1.0
+pr1m8_unique,Jailbreak,v1,7,10,3,0.47619047619047616
+pr1m8_unique,Jailbreak,v2,7,21,3,1.0
+pr1m8_unique,Jailbreak,v2cf,7,21,3,1.0
+pr1m8_unique,Jailbreak,v3,7,21,3,1.0
+pr1m8_unique,Multilingual,B1,4,0,3,0.0
+pr1m8_unique,Multilingual,B2,4,1,3,0.08333333333333333
+pr1m8_unique,Multilingual,B3,4,3,1,0.75
+pr1m8_unique,Multilingual,v1,4,0,3,0.0
+pr1m8_unique,Multilingual,v2,4,0,3,0.0
+pr1m8_unique,Multilingual,v2cf,4,1,3,0.08333333333333333
+pr1m8_unique,Multilingual,v3,4,6,3,0.5
+pr1m8_unique,Psychological Manipulation,B1,6,3,3,0.16666666666666666
+pr1m8_unique,Psychological Manipulation,B2,6,17,3,0.9444444444444444
+pr1m8_unique,Psychological Manipulation,B3,6,4,1,0.6666666666666666
+pr1m8_unique,Psychological Manipulation,v1,6,4,3,0.2222222222222222
+pr1m8_unique,Psychological Manipulation,v2,6,18,3,1.0
+pr1m8_unique,Psychological Manipulation,v2cf,6,18,3,1.0
+pr1m8_unique,Psychological Manipulation,v3,6,16,3,0.8888888888888888
